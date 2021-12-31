@@ -124,6 +124,8 @@ public class Phone {
         HashMap<String, String> errors = new HashMap<>();
         if (name == null || name.length() == 0) {
             errors.put("name", "Name cannot be empty");
+        } else if (name.length() < 3) {
+            errors.put("name", "Name must be minimum 3 characters");
         }
 
         if (brand == null || brand.length() == 0 || brand.equalsIgnoreCase("Please select one of the follow brand")) {
@@ -134,8 +136,10 @@ public class Phone {
             errors.put("price", "Price cannot be negative or equals to zero.");
         }
 
-        if (description == null || name.length() == 0) {
+        if (description == null || description.length() == 0) {
             errors.put("description", "Description cannot be empty.");
+        } else if (description.length() < 5) {
+            errors.put("description", "Description must be minimum 5 characters");
         }
         return errors;
     }

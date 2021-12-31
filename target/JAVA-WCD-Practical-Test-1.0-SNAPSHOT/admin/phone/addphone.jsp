@@ -13,10 +13,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     request.setCharacterEncoding("utf-8");
-    Phone product = (Phone) request.getAttribute("phone");
+    Phone phone = (Phone) request.getAttribute("phone");
     HashMap<String, String> errors = (HashMap<String, String>) request.getAttribute("errors");
-    if (product == null) {
-        product = new Phone();
+    if (phone == null) {
+        phone = new Phone();
     }
     if (errors == null) {
         errors = new HashMap<>();
@@ -65,12 +65,12 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="name">Name:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" required>
+                    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" value="<%=phone.getName()%>" required>
                     <%
                         if (errors.containsKey("name")) {
 
                     %>
-                    <div class="w3-text-red w3-margin-top w3-margin-bottom">*<%=errors.get("name")%>
+                    <div class="text-danger w3-margin-top w3-margin-bottom">*<%=errors.get("name")%>
                     </div>
                     <%
                         }
@@ -80,18 +80,18 @@
             <div class="form-group">
                 <label class="control-label col-sm-2">Brand:</label>
                 <div class="col-sm-4">
-                    <select class="form-select" id="brand" aria-label="Default select example" name="brand">
+                    <select class="form-select" id="brand" aria-label="Default select example" value="<%=phone.getBrand()%>" name="brand">
                         <option selected value="0">Please select one of the follow brand</option>
-                        <option value="1">Apple</option>
-                        <option value="2">Samsung</option>
-                        <option value="3">Nokia</option>
-                        <option value="4">Others</option>
+                        <option value="Apple">Apple</option>
+                        <option value="Samsung">Samsung</option>
+                        <option value="Nokia">Nokia</option>
+                        <option value="Others">Others</option>
                     </select>
                     <%
                         if (errors.containsKey("brand")) {
 
                     %>
-                    <div class="w3-text-red w3-margin-top w3-margin-bottom">*<%=errors.get("brand")%>
+                    <div class="text-danger w3-margin-top w3-margin-bottom">*<%=errors.get("brand")%>
                     </div>
                     <%
                         }
@@ -102,12 +102,12 @@
                 <label class="control-label col-sm-2" for="price">Price:</label>
                 <div class="col-sm-4">
                     <input type="number" class="form-control" id="price" placeholder="Enter Price"
-                           name="price" required>
+                           name="price" value="<%=phone.getPrice()%>" required>
                     <%
                         if (errors.containsKey("price")) {
 
                     %>
-                    <div class="w3-text-red w3-margin-top w3-margin-bottom">*<%=errors.get("price")%>
+                    <div class="text-danger w3-margin-top w3-margin-bottom">*<%=errors.get("price")%>
                     </div>
                     <%
                         }
@@ -118,7 +118,7 @@
             <div class="form-group">
                 <label class="control-label col-sm-2" for="description">Description:</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="description" placeholder="Enter Description"
+                    <input type="text" class="form-control" id="description" placeholder="Enter Description" value="<%=phone.getDescription()%>"
                            name="description">
                     <%
                         if (errors.containsKey("description")) {
